@@ -6,7 +6,7 @@ export default function RootLayout() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <Drawer
         screenOptions={{
-          headerShown: true, // ya false agar header nahi chahiye
+          headerShown: false, // ya false agar header nahi chahiye
         }}
       >
         {/* User Screens */}
