@@ -125,7 +125,7 @@ export default function Login() {
               borderRadius: 10,
               alignItems: "center",
             }}
-            onPress={()=>router.push("/auth/Signup")}
+            onPress={()=>router.push("/src/Loader")}
           >
             <Text style={{ color: "white", fontWeight: "bold", fontSize: 16 }}>
               Login
