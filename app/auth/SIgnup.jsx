@@ -9,8 +9,10 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
+import { useRouter } from "expo-router";
 
 export default function Signup() {
+  const router = useRouter();
   return (
     <KeyboardAvoidingView
       style={{ flex: 1, backgroundColor: "#fff" }}
@@ -19,24 +21,24 @@ export default function Signup() {
       <StatusBar hidden />
 
       <ScrollView
+        style={{ flex: 1 }}
         contentContainerStyle={{
-          flexGrow: 1,
-          alignItems: "center",
-          backgroundColor: "#fff",
+          paddingBottom: 20,
         }}
+        showsVerticalScrollIndicator={false}
         keyboardShouldPersistTaps="handled"
       >
         <View
           style={{
-            height: "45%",
+            height: 350,
             backgroundColor: "#008CFF",
             width: "100%",
-            // borderRadius:100,
-            borderBottomLeftRadius: 115, // pixel value — NOT percentage
-            borderBottomRightRadius: 115,
             justifyContent: "center",
             alignItems: "center",
-            // paddingHorizontal: 20,
+            borderBottomLeftRadius: 200,
+            borderBottomRightRadius: 200,
+            overflow: "hidden",
+            paddingHorizontal: 20,
           }}
         >
           <Image
@@ -57,25 +59,47 @@ export default function Signup() {
             }}
           >
             Experience seamless collaboration where your goals meet our
-            professional expertise. Together, we create exceptional results.
+            professional expertise.
           </Text>
         </View>
 
-        <View
-          style={{
-            width: "90%",
-            marginTop: 30,
-            justifyContent: "center",
-            // alignItems:"center",
-            textAlign: "center",
-          }}
-        >
-          <Text style={{ fontSize: 24, fontWeight: "700", color: "#333" }}>
+        <View style={{ paddingHorizontal: 20, paddingTop: 20 }}>
+          <Text
+            style={{
+              fontSize: 24,
+              fontWeight: "700",
+              color: "#333",
+              textAlign: "center",
+              marginBottom: 10,
+            }}
+          >
             Signup
           </Text>
-          <Text style={{ color: "#555", marginBottom: 20 }}>
+
+          <Text
+            style={{
+              color: "#555",
+              marginBottom: 20,
+              textAlign: "center",
+            }}
+          >
             Enter your email and password to login
           </Text>
+
+          <Text style={{ color: "#333", fontWeight: "600", marginBottom: 5 }}>
+            Name
+          </Text>
+          <TextInput
+            placeholder="Enter your Name"
+            placeholderTextColor="#aaa"
+            style={{
+              borderWidth: 1,
+              borderColor: "#008CFF",
+              borderRadius: 8,
+              padding: 12,
+              marginBottom: 20,
+            }}
+          />
 
           <Text style={{ color: "#333", fontWeight: "600", marginBottom: 5 }}>
             Email Address
@@ -104,20 +128,25 @@ export default function Signup() {
               borderColor: "#008CFF",
               borderRadius: 8,
               padding: 12,
-              marginBottom: 15,
+              marginBottom: 20,
             }}
           />
 
-          <Text
-            style={{
-              textAlign: "right",
-              color: "#008CFF",
-              marginBottom: 25,
-              fontWeight: "500",
-            }}
-          >
-            Forgot password?
+          <Text style={{ color: "#333", fontWeight: "600", marginBottom: 5 }}>
+            Confirm Password
           </Text>
+          <TextInput
+            placeholder="Enter your confirm password"
+            placeholderTextColor="#aaa"
+            secureTextEntry
+            style={{
+              borderWidth: 1,
+              borderColor: "#008CFF",
+              borderRadius: 8,
+              padding: 12,
+              marginBottom: 20,
+            }}
+          />
 
           <TouchableOpacity
             style={{
@@ -125,8 +154,9 @@ export default function Signup() {
               paddingVertical: 15,
               borderRadius: 10,
               alignItems: "center",
+              marginBottom: 50,
             }}
-            onPress={() => router.push("/Signup")}
+            onPress={()=>router.push("/src/admin/Dashboard")}
           >
             <Text style={{ color: "white", fontWeight: "bold", fontSize: 16 }}>
               Signup

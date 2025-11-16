@@ -10,9 +10,11 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useRouter } from "expo-router";
+// import BeforeAfterSlider from "../components/beforeafter";
 
 export default function Login() {
   const router = useRouter();
+
   return (
     <KeyboardAvoidingView
       style={{ flex: 1, backgroundColor: "#fff" }}
@@ -21,35 +23,45 @@ export default function Login() {
       <StatusBar hidden />
 
       <ScrollView
-        contentContainerStyle={{
-          flexGrow: 1,
-          alignItems: "center",
-          backgroundColor: "#fff",
-        }}
+        showsVerticalScrollIndicator={false}
         keyboardShouldPersistTaps="handled"
+        contentContainerStyle={{
+          paddingBottom: 60,
+          alignItems: "center",
+        }}
       >
+        {/* HEADER */}
         <View
           style={{
-            height: "45%",
+            height: 330,
             backgroundColor: "#008CFF",
             width: "100%",
-            // borderRadius:100,
-            borderBottomLeftRadius: 100, // pixel value — NOT percentage
-            borderBottomRightRadius: 100,
             justifyContent: "center",
             alignItems: "center",
-            // paddingHorizontal: 20,
+            borderBottomLeftRadius: 200,
+            borderBottomRightRadius: 200,
+            overflow: "hidden",
+            paddingHorizontal: 30,
           }}
         >
           <Image
-            source={require("../../assets/images/icon.png")}
-            style={{ height: 100, width: 100, marginBottom: 20 }}
-            resizeMode="contain"
+            source={require("../../assets/images/bgimg.png")}
+            style={{
+              width: 300,
+              height: 350,
+              position: "absolute",
+              // top: -20,
+              // left: -20,
+              zIndex: 0, // sabse niche
+              opacity: 0.2, // optional
+            }}
           />
+          {/* <BeforeAfterSlider/> */}
 
           <Text style={{ color: "white", fontSize: 18, fontWeight: "600" }}>
             Your Vision Our Expertise
           </Text>
+
           <Text
             style={{
               color: "white",
@@ -63,22 +75,36 @@ export default function Login() {
           </Text>
         </View>
 
+        {/* FORM */}
         <View
           style={{
             width: "90%",
             marginTop: 30,
           }}
         >
-          <Text style={{ fontSize: 24, fontWeight: "700", color: "#333" }}>
+          <Text
+            style={{
+              fontSize: 24,
+              fontWeight: "700",
+              color: "#333",
+              textAlign: "center",
+            }}
+          >
             Login
           </Text>
-          <Text style={{ color: "#555", marginBottom: 20 }}>
+
+          <Text
+            style={{
+              color: "#555",
+              marginBottom: 20,
+              textAlign: "center",
+            }}
+          >
             Enter your email and password to login
           </Text>
 
-          <Text style={{ color: "#333", fontWeight: "600", marginBottom: 5 }}>
-            Email Address
-          </Text>
+          {/* Email */}
+          <Text style={{ fontWeight: "600", marginBottom: 5 }}>Email</Text>
           <TextInput
             placeholder="Enter your email"
             placeholderTextColor="#aaa"
@@ -91,9 +117,8 @@ export default function Login() {
             }}
           />
 
-          <Text style={{ color: "#333", fontWeight: "600", marginBottom: 5 }}>
-            Password
-          </Text>
+          {/* Password */}
+          <Text style={{ fontWeight: "600", marginBottom: 5 }}>Password</Text>
           <TextInput
             placeholder="Enter your password"
             placeholderTextColor="#aaa"
@@ -124,8 +149,9 @@ export default function Login() {
               paddingVertical: 15,
               borderRadius: 10,
               alignItems: "center",
+              marginBottom: 20,
             }}
-            onPress={()=>router.push("/src/Loader")}
+            onPress={() => router.push("/auth/Signup")}
           >
             <Text style={{ color: "white", fontWeight: "bold", fontSize: 16 }}>
               Login
