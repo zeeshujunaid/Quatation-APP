@@ -55,7 +55,7 @@ export default function Dashboard() {
             >
               Recent Quotation
             </Text>
-            <TouchableOpacity onPress={() => router.push("/src/admin/RecentQuatation")}>
+            <TouchableOpacity onPress={() => router.push("/src/common/RecentQuatation")}>
               <Text
                 style={{
                   fontFamily: "fustat",

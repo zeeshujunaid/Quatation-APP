@@ -73,7 +73,7 @@ export default function Client() {
               Client List
             </Text>
             <TouchableOpacity
-              onPress={() => router.push("/src/admin/RecentClients")}
+              onPress={() => router.push("/src/common/RecentClients")}
             >
               <Text
                 style={{
@@ -103,7 +103,7 @@ export default function Client() {
               }}
             >
               <Text style={{ flex: 0.35, fontWeight: "700" }}>Client Name</Text>
-              <Text style={{ flex: 0.25, fontWeight: "700" }}>Company</Text>
+              <Text style={{ flex: 0.35, fontWeight: "700" }}>Company</Text>
               <Text style={{ flex: 0.25, fontWeight: "700" }}>Phone</Text>
             </View>
 
@@ -122,7 +122,7 @@ export default function Client() {
               >
                 <Text style={{ flex: 0.35 }}>{item.clientName}</Text>
                 <Text style={{ flex: 0.25 }}>{item.CompanyName}</Text>
-                <Text style={{ flex: 0.25 }}>{item.PhoneNumber}</Text>
+                <Text style={{ flex: 0.35 }}>{item.PhoneNumber}</Text>
               </View>
             ))}
           </ScrollView>

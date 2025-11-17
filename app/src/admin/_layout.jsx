@@ -1,20 +1,54 @@
 import { Drawer } from "expo-router/drawer";
-// import DrawerHeader from "../../components/Drawerheader";
-import { View } from "react-native";
+import CustomDrawer from "../../components/Drawerheader";
+import { Ionicons } from "@expo/vector-icons";
+
 export default function AdminDrawer() {
   return (
-    <View style={{flex:1,}}>
-      {/* <DrawerHeader/> */}
-    <Drawer screenOptions={{ headerShown: false }}>
-      <Drawer.Screen name="Dashboard" options={{ title: "Dashboard" }} />
-      <Drawer.Screen name="Quatation" options={{ title: "Manage Quotes" }} />
-      <Drawer.Screen name="Templates" options={{ title: "Settings" }} />
-      <Drawer.Screen name="Clientlist" options={{ title: "Clients" }} />
+    <Drawer
+      drawerContent={(props) => <CustomDrawer {...props} />}
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Drawer.Screen
+        name="Dashboard"
+        options={{
+          title: "Dashboard",
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="home-outline" size={size} color={color} />
+          ),
+        }}
+      />
+
+      <Drawer.Screen
+        name="Clientlist"
+        options={{
+          title: "Clients",
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="people-outline" size={size} color={color} />
+          ),
+        }}
+      />
+
+      <Drawer.Screen
+        name="Templates"
+        options={{
+          title: "Templates",
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="albums-outline" size={size} color={color} />
+          ),
+        }}
+      />
+
       <Drawer.Screen
         name="Usermanagment"
-        options={{ title: "Usermanagment" }}
+        options={{
+          title: "User Management",
+          drawerIcon: ({ color, size }) => (
+            <Ionicons name="person-add-outline" size={size} color={color} />
+          ),
+        }}
       />
     </Drawer>
-        </View>
   );
 }
