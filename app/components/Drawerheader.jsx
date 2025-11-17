@@ -2,10 +2,12 @@ import {
   DrawerContentScrollView,
   DrawerItemList,
 } from "@react-navigation/drawer";
+import { useRouter } from "expo-router";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 
 export default function CustomDrawer(props) {
+  const router =useRouter();
   return (
     <View style={{ flex: 1, backgroundColor: "#fff" }}>
       {/* 🔥 TOP HEADER */}
@@ -66,9 +68,9 @@ export default function CustomDrawer(props) {
           style={{
             flexDirection: "row",
             alignItems: "center",
-            justifyContent:"space-around",
+            justifyContent: "space-around",
             gap: 10,
-            height:90,
+            height: 90,
           }}
         >
           <View
@@ -84,16 +86,23 @@ export default function CustomDrawer(props) {
             <Ionicons name="notifications-outline" size={24} color="black" />
           </View>
 
-<View style={{flexDirection:"row",marginLeft:70,}}>
-
-          <Ionicons name="person-circle-outline" size={40} color="black" />
-          <View style={{justifyContent:"flex-start",alignItems:"flex-end"}}>
-            <Text style={{ fontSize: 14, fontWeight: "700", color: "#000" }}>
-              AHSAN KHAN
-            </Text>
-            <Text style={{ fontSize: 12, color: "#555" }}>Business Owner</Text>
+          <View style={{ flexDirection: "row", marginLeft: 70 }}>
+            <TouchableOpacity
+              onPress={() => router.push("/src/common/Profile")}
+            >
+              <Ionicons name="person-circle-outline" size={40} color="black" />
+            </TouchableOpacity>
+            <View
+              style={{ justifyContent: "flex-start", alignItems: "flex-end" }}
+            >
+              <Text style={{ fontSize: 14, fontWeight: "700", color: "#000" }}>
+                AHSAN KHAN
+              </Text>
+              <Text style={{ fontSize: 12, color: "#555" }}>
+                Business Owner
+              </Text>
+            </View>
           </View>
-</View>
         </View>
       </View>
     </View>

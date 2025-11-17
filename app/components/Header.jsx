@@ -1,16 +1,18 @@
-import { Text, View, Pressable } from "react-native";
+import { Text, View, Pressable, TouchableOpacity } from "react-native";
 import Entypo from "@expo/vector-icons/Entypo";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { useRouter } from "expo-router";
 import { DrawerActions, useNavigation } from "@react-navigation/native";
 
 export default function Header() {
+  const router =useRouter();
   const navigation = useNavigation();
 
   return (
     <View
       style={{
         width: "100%",
-        height: "15%",
+        height: "12%",
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
@@ -37,7 +39,9 @@ export default function Header() {
         <View style={{backgroundColor:"#eeeeeeff",height:40,width:40,justifyContent:"center",alignItems:"center",borderRadius:10,}}>
           <Ionicons name="notifications-outline" size={24} color="black" />
         </View>
+        <TouchableOpacity onPress={()=>router.push("/src/common/Profile")}>
         <Ionicons name="person-circle-outline" size={40} color="black" />
+        </TouchableOpacity>
 
         <View>
           <Text style={{ fontSize: 14, fontWeight: "700", color: "#000" }}>
