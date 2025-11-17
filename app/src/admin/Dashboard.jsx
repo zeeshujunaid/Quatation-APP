@@ -1,9 +1,11 @@
-import { ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, Touchable, TouchableOpacity, View } from "react-native";
 import Header from "../../components/Header";
 import Welcomsection from "../../components/Welcomesection";
 import Adminherosection from "../../components/Adminherosection";
+import { useRouter } from "expo-router";
 
 export default function Dashboard() {
+  const router = useRouter();
 
   const quotations = [
     { id: "01", client: "Ali Khan", date: "12 Nov 2025", total: "250" },
@@ -53,31 +55,39 @@ export default function Dashboard() {
             >
               Recent Quotation
             </Text>
-            <Text
-              style={{
-                fontFamily: "fustat",
-                fontWeight: "600",
-                fontSize: 14,
-              }}
-            >
-              View All
-            </Text>
+            <TouchableOpacity onPress={() => router.push("/src/admin/RecentQuatation")}>
+              <Text
+                style={{
+                  fontFamily: "fustat",
+                  fontWeight: "600",
+                  fontSize: 14,
+                }}
+              >
+                View All
+              </Text>
+            </TouchableOpacity>
           </View>
 
-          <View style={{ flex: 1,  borderRadius:10,
-                backgroundColor: "#ffffffff",
-                borderWidth:1,
-                borderColor:"#00000025", paddingTop: 20 }}>
+          <View
+            style={{
+              flex: 1,
+              borderRadius: 10,
+              backgroundColor: "#ffffffff",
+              borderWidth: 1,
+              borderColor: "#00000025",
+              paddingTop: 20,
+            }}
+          >
             <View
               style={{
                 flexDirection: "row",
                 justifyContent: "space-between",
                 paddingVertical: 8,
                 paddingHorizontal: 10,
-                borderRadius:10,
+                borderRadius: 10,
                 backgroundColor: "#eeeeee9c",
-                borderWidth:1,
-                borderColor:"#0000002c"
+                borderWidth: 1,
+                borderColor: "#0000002c",
               }}
             >
               <Text style={{ width: "15%", fontWeight: "700" }}>#</Text>
