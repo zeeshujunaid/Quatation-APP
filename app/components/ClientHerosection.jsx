@@ -1,6 +1,7 @@
 import { Text, View } from "react-native";
-import Ionicons from "@expo/vector-icons/Ionicons";
-
+import Feather from "@expo/vector-icons/Feather";
+import AntDesign from "@expo/vector-icons/AntDesign";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 export default function Clientherosection() {
   return (
     <View
@@ -11,7 +12,6 @@ export default function Clientherosection() {
         paddingHorizontal: 10,
       }}
     >
-      {/* First Row */}
       <View
         style={{
           flexDirection: "row",
@@ -19,7 +19,6 @@ export default function Clientherosection() {
           marginBottom: 10,
         }}
       >
-        {/* BOX 1 */}
         <View
           style={{
             flexDirection: "column",
@@ -41,7 +40,7 @@ export default function Clientherosection() {
                 marginRight: 8,
               }}
             >
-              <Ionicons name="notifications-outline" size={20} color="#444" />
+              <Feather name="users" size={24} color="#527EDB" />
             </View>
 
             <Text
@@ -54,7 +53,7 @@ export default function Clientherosection() {
               }}
               numberOfLines={2}
             >
-              Total Quotation
+              Total Clients
             </Text>
           </View>
 
@@ -69,13 +68,21 @@ export default function Clientherosection() {
             12
           </Text>
 
-          <View style={{ flexDirection: "row", marginTop: 4 }}>
-            <Text style={{ color: "green", fontWeight: "600" }}>+2% </Text>
+          <View style={{ flexDirection: "row", marginTop: 4, gap: 5 }}>
+            <Text
+              style={{
+                color: "#527EDB",
+                fontWeight: "600",
+                backgroundColor: "#527ddb3a",
+                borderRadius: 5,
+              }}
+            >
+              +2%{" "}
+            </Text>
             <Text style={{ color: "#666" }}>vs last week</Text>
           </View>
         </View>
 
-        {/* BOX 2 */}
         <View
           style={{
             flexDirection: "column",
@@ -91,17 +98,17 @@ export default function Clientherosection() {
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <View
               style={{
-                backgroundColor: "#f1f1f1",
+                backgroundColor: "#17b26a3a",
                 padding: 8,
-                borderRadius: 50,
+                borderRadius: 60,
                 marginRight: 8,
               }}
             >
-              <Ionicons name="notifications-outline" size={20} color="#444" />
+              <AntDesign name="check-circle" size={24} color="#17B26A" />
             </View>
 
             <Text style={{ fontSize: 18, fontWeight: "600", color: "#333" }}>
-              Pending Quotation
+              Approved Quotation
             </Text>
           </View>
 
@@ -116,14 +123,22 @@ export default function Clientherosection() {
             25%
           </Text>
 
-          <View style={{ flexDirection: "row", marginTop: 4 }}>
-            <Text style={{ color: "green", fontWeight: "600" }}>+2% </Text>
+          <View style={{ flexDirection: "row", marginTop: 4, gap: 5 }}>
+            <Text
+              style={{
+                color: "green",
+                fontWeight: "600",
+                backgroundColor: "#17b26a3a",
+                borderRadius: 5,
+              }}
+            >
+              +2%{" "}
+            </Text>
             <Text style={{ color: "#666" }}>vs last week</Text>
           </View>
         </View>
       </View>
 
-      {/* Single Box */}
       <View style={{ flexDirection: "row", justifyContent: "space-around" }}>
         <View
           style={{
@@ -140,13 +155,13 @@ export default function Clientherosection() {
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <View
               style={{
-                backgroundColor: "#f1f1f1",
+                backgroundColor: "#ff03032a",
                 padding: 8,
                 borderRadius: 50,
                 marginRight: 8,
               }}
             >
-              <Ionicons name="notifications-outline" size={20} color="#444" />
+              <AntDesign name="close" size={24} color="red" />
             </View>
 
             <Text
@@ -172,12 +187,20 @@ export default function Clientherosection() {
             230
           </Text>
 
-          <View style={{ flexDirection: "row", marginTop: 4 }}>
-            <Text style={{ color: "green", fontWeight: "600" }}>+2% </Text>
+          <View style={{ flexDirection: "row", marginTop: 4, gap: 5 }}>
+            <Text
+              style={{
+                color: "red",
+                fontWeight: "600",
+                backgroundColor: "#ff03032a",
+                borderRadius: 5,
+              }}
+            >
+              +2%{" "}
+            </Text>
             <Text style={{ color: "#666" }}>vs last week</Text>
           </View>
         </View>
-        {/* Single Box */}
         <View
           style={{
             flexDirection: "column",
@@ -193,13 +216,17 @@ export default function Clientherosection() {
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <View
               style={{
-                backgroundColor: "#f1f1f1",
+                backgroundColor: "#17b26a1c",
                 padding: 8,
                 borderRadius: 50,
                 marginRight: 8,
               }}
             >
-              <Ionicons name="notifications-outline" size={20} color="#444" />
+              <MaterialCommunityIcons
+                name="format-title"
+                size={24}
+                color="green"
+              />
             </View>
 
             <Text
@@ -225,8 +252,17 @@ export default function Clientherosection() {
             230
           </Text>
 
-          <View style={{ flexDirection: "row", marginTop: 4 }}>
-            <Text style={{ color: "green", fontWeight: "600" }}>+2% </Text>
+          <View style={{ flexDirection: "row", marginTop: 4 ,gap:5,}}>
+            <Text
+              style={{
+                color: "green",
+                fontWeight: "600",
+                borderRadius:5,
+                backgroundColor: "#17b26a1c",
+              }}
+            >
+              +2%{" "}
+            </Text>
             <Text style={{ color: "#666" }}>vs last week</Text>
           </View>
         </View>

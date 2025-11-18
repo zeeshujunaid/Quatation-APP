@@ -1,6 +1,7 @@
 import { Text, View } from "react-native";
-import Ionicons from "@expo/vector-icons/Ionicons";
-
+import AntDesign from "@expo/vector-icons/AntDesign";
+import Feather from "@expo/vector-icons/Feather";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 export default function Adminherosection() {
   return (
     <View
@@ -11,7 +12,6 @@ export default function Adminherosection() {
         paddingHorizontal: 10,
       }}
     >
-      {/* First Row */}
       <View
         style={{
           flexDirection: "row",
@@ -19,7 +19,6 @@ export default function Adminherosection() {
           marginBottom: 10,
         }}
       >
-        {/* BOX 1 */}
         <View
           style={{
             flexDirection: "column",
@@ -35,13 +34,13 @@ export default function Adminherosection() {
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <View
               style={{
-                backgroundColor: "#f1f1f1",
+                backgroundColor: "#E9EAEC",
                 padding: 8,
-                borderRadius: 50,
+                borderRadius: 60,
                 marginRight: 8,
               }}
             >
-              <Ionicons name="notifications-outline" size={20} color="#444" />
+              <AntDesign name="file" size={24} color="#00000049" />
             </View>
 
             <Text
@@ -69,13 +68,21 @@ export default function Adminherosection() {
             12
           </Text>
 
-          <View style={{ flexDirection: "row", marginTop: 4 }}>
-            <Text style={{ color: "green", fontWeight: "600" }}>+2% </Text>
+          <View style={{ flexDirection: "row", marginTop: 4,gap:5, }}>
+            <Text
+              style={{
+                color: "green",
+                fontWeight: "600",
+                backgroundColor: "#E5F5ED",
+                borderRadius: 5,
+              }}
+            >
+              +2%{" "}
+            </Text>
             <Text style={{ color: "#666" }}>vs last week</Text>
           </View>
         </View>
 
-        {/* BOX 2 */}
         <View
           style={{
             flexDirection: "column",
@@ -91,13 +98,13 @@ export default function Adminherosection() {
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <View
               style={{
-                backgroundColor: "#f1f1f1",
+                backgroundColor: "#17b26a1a",
                 padding: 8,
                 borderRadius: 50,
                 marginRight: 8,
               }}
             >
-              <Ionicons name="notifications-outline" size={20} color="#444" />
+              <MaterialIcons name="pending-actions" size={24} color="#17B26A" />
             </View>
 
             <Text style={{ fontSize: 18, fontWeight: "600", color: "#333" }}>
@@ -116,14 +123,22 @@ export default function Adminherosection() {
             25%
           </Text>
 
-          <View style={{ flexDirection: "row", marginTop: 4 }}>
-            <Text style={{ color: "green", fontWeight: "600" }}>+2% </Text>
+          <View style={{ flexDirection: "row", marginTop: 4, gap: 4 }}>
+            <Text
+              style={{
+                color: "green",
+                fontWeight: "600",
+                backgroundColor: "#E5F5ED",
+                borderRadius: 5,
+              }}
+            >
+              +2%{" "}
+            </Text>
             <Text style={{ color: "#666" }}>vs last week</Text>
           </View>
         </View>
       </View>
 
-      {/* Single Box */}
       <View
         style={{
           flexDirection: "column",
@@ -138,13 +153,13 @@ export default function Adminherosection() {
         <View style={{ flexDirection: "row", alignItems: "center" }}>
           <View
             style={{
-              backgroundColor: "#f1f1f1",
+              backgroundColor: "#EEF2FB",
               padding: 8,
-              borderRadius: 50,
+              borderRadius: 60,
               marginRight: 8,
             }}
           >
-            <Ionicons name="notifications-outline" size={20} color="#444" />
+            <Feather name="users" size={24} color="#527EDB" />
           </View>
 
           <Text
@@ -170,8 +185,17 @@ export default function Adminherosection() {
           230
         </Text>
 
-        <View style={{ flexDirection: "row", marginTop: 4 }}>
-          <Text style={{ color: "green", fontWeight: "600" }}>+2% </Text>
+        <View style={{ flexDirection: "row", marginTop: 4 ,gap:5,}}>
+          <Text
+            style={{
+              color: "green",
+              fontWeight: "600",
+              backgroundColor: "#E5F5ED",
+              borderRadius: 5,
+            }}
+          >
+            +2%{" "}
+          </Text>
           <Text style={{ color: "#666" }}>vs last week</Text>
         </View>
       </View>

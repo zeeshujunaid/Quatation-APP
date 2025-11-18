@@ -160,8 +160,6 @@ export default function UserManagement() {
   return (
     <View style={{ flex: 1, backgroundColor: "#f8f8f8" }}>
       <Header />
-
-      {/* Title Section */}
       <View style={{ padding: 15 }}>
         <Text style={{ fontSize: 22, fontWeight: "700", marginBottom: 5 }}>
           USER MANAGEMENT
@@ -173,8 +171,6 @@ export default function UserManagement() {
           ALL USERS (200 users)
         </Text>
       </View>
-
-      {/* Search and Add User */}
       <View
         style={{
           flexDirection: "row",
@@ -208,8 +204,6 @@ export default function UserManagement() {
           <Text style={{ color: "#fff", fontWeight: "600" }}> + ADD USER</Text>
         </TouchableOpacity>
       </View>
-
-      {/* Table Header */}
       <View
         style={{
           flexDirection: "row",
@@ -228,8 +222,6 @@ export default function UserManagement() {
           Actions
         </Text>
       </View>
-
-      {/* Scrollable Users */}
       <ScrollView
         style={{ flex: 1, paddingHorizontal: 15, marginTop: 1 }}
         contentContainerStyle={{ paddingBottom: 30 }}
@@ -243,7 +235,6 @@ export default function UserManagement() {
               alignItems: "center",
               backgroundColor: "#fff",
               paddingVertical: 12,
-              //   paddingHorizontal: 15,
               borderBottomWidth: 1,
               borderBottomColor: "#eee",
             }}
@@ -272,8 +263,6 @@ export default function UserManagement() {
                 />
               )}
             </TouchableOpacity>
-
-            {/* User Info */}
             <View
               style={{ flex: 1, flexDirection: "row", alignItems: "center" }}
             >
@@ -293,8 +282,6 @@ export default function UserManagement() {
                 </Text>
               </View>
             </View>
-
-            {/* Actions Buttons */}
             <View
               style={{
                 width: 120,
@@ -340,7 +327,6 @@ export default function UserManagement() {
         ))}
       </ScrollView>
 
-      {/* Modal */}
       <Modal
         transparent
         visible={modalVisible}
@@ -354,60 +340,85 @@ export default function UserManagement() {
               backgroundColor: "rgba(0,0,0,0.5)",
               justifyContent: "center",
               alignItems: "center",
+              paddingHorizontal: 20,
             }}
           >
             <View
               style={{
-                width: "90%",
+                width: "100%",
                 backgroundColor: "#fff",
-                borderRadius: 8,
+                borderRadius: 12,
                 padding: 20,
               }}
             >
-              {/* Modal UI */}
               <Text
-                style={{ fontWeight: "600", marginBottom: 10, fontSize: 20 }}
+                style={{ fontWeight: "600", marginBottom: 15, fontSize: 20 }}
               >
                 Configure Field: Add User
               </Text>
+
+              {/* Name & Email in Row */}
               <View
                 style={{
                   flexDirection: "row",
-                  width: "100%",
-                  justifyContent: "space-around",
-                  alignItems: "center",
-                  marginTop: 20,
+                  justifyContent: "space-between",
                 }}
               >
+                <View style={{ flex: 1, marginRight: 10 }}>
+                  <Text style={{ fontWeight: "600", marginBottom: 5 }}>
+                    Name
+                  </Text>
+                  <TextInput
+                    placeholder="Name"
+                    style={{
+                      borderWidth: 1,
+                      borderColor: "#ccc",
+                      borderRadius: 8,
+                      padding: 10,
+                    }}
+                  />
+                </View>
+
+                <View style={{ flex: 1, marginLeft: 10 }}>
+                  <Text style={{ fontWeight: "600", marginBottom: 5 }}>
+                    Email
+                  </Text>
+                  <TextInput
+                    placeholder="Email"
+                    style={{
+                      borderWidth: 1,
+                      borderColor: "#ccc",
+                      borderRadius: 8,
+                      padding: 10,
+                    }}
+                  />
+                </View>
+              </View>
+
+              {/* Password */}
+              <View style={{ marginTop: 15 }}>
+                <Text style={{ fontWeight: "600", marginBottom: 5 }}>
+                  Password
+                </Text>
                 <TextInput
-                  placeholder="Name"
+                  placeholder="Enter your password"
+                  placeholderTextColor="#aaa"
+                  secureTextEntry
                   style={{
                     borderWidth: 1,
-                    borderColor: "#ccc",
-                    borderRadius: 6,
-                    marginBottom: 10,
-                    width: "48%",
-                    padding: 8,
-                  }}
-                />
-                <TextInput
-                  placeholder="Email"
-                  style={{
-                    borderWidth: 1,
-                    width: "48%",
-                    borderColor: "#ccc",
-                    borderRadius: 6,
-                    marginBottom: 10,
-                    padding: 8,
+                    borderColor: "#008CFF",
+                    borderRadius: 8,
+                    padding: 12,
                   }}
                 />
               </View>
 
+              {/* Add Button */}
               <View
                 style={{
                   flexDirection: "row",
                   justifyContent: "flex-end",
-                  marginTop: 30,
+                  marginTop: 25,
                 }}
               >
                 <TouchableOpacity
@@ -420,7 +431,7 @@ export default function UserManagement() {
                     alignItems: "center",
                   }}
                 >
-                  <Text style={{ color: "#fff" }}>ADD</Text>
+                  <Text style={{ color: "#fff", fontWeight: "600" }}>ADD</Text>
                 </TouchableOpacity>
               </View>
             </View>

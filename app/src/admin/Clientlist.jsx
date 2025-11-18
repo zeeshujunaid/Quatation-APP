@@ -3,6 +3,7 @@ import Welcomsection from "../../components/Welcomesection";
 import AdminHeader from "../../components/Header";
 import Clientherosection from "../../components/ClientHerosection";
 import { useRouter } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
 
 export default function Client() {
   const router = useRouter();
@@ -35,40 +36,78 @@ export default function Client() {
       <AdminHeader />
       <Welcomsection />
 
-      {/* Parent ScrollView */}
-      <ScrollView
-        style={{ flex: 1 }}
-        contentContainerStyle={{ paddingBottom: 20 }}
-      >
-        <View style={{ marginBottom: 120 }}>
+      <ScrollView contentContainerStyle={{ paddingBottom: 40 }}>
+        <View style={{ marginBottom: 80 }}>
           <Clientherosection />
         </View>
-        {/* Filter Row */}
+
         <View
           style={{
             flexDirection: "row",
-            justifyContent: "space-around",
-            marginBottom: 10,
+            justifyContent: "space-between",
+            marginHorizontal: 10,
+            marginBottom: 15,
           }}
         >
-          <Text>Filter</Text>
-          <Text>Clients</Text>
-          <Text>Status</Text>
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              borderWidth: 1,
+              borderColor: "#ccc",
+              paddingHorizontal: 8,
+              paddingVertical: 4,
+              borderRadius: 8,
+            }}
+          >
+            <Text style={{ marginRight: 4 }}>Filter</Text>
+            <Ionicons name="filter" size={16} />
+          </View>
+
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              borderWidth: 1,
+              borderColor: "#ccc",
+              paddingHorizontal: 8,
+              paddingVertical: 4,
+              borderRadius: 8,
+            }}
+          >
+            <Text style={{ marginRight: 4 }}>Client</Text>
+            <Text style={{ color: "green", marginRight: 4 }}>Zeeshan</Text>
+            <Ionicons name="close" size={16} color="red" />
+          </View>
+
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              borderWidth: 1,
+              borderColor: "#ccc",
+              paddingHorizontal: 8,
+              paddingVertical: 4,
+              borderRadius: 8,
+            }}
+          >
+            <Text style={{ marginRight: 4 }}>Status</Text>
+            <Text style={{ color: "green", marginRight: 4 }}>Approved</Text>
+            <Ionicons name="close" size={16} color="red" />
+          </View>
         </View>
 
-        {/* Recent Quotations */}
-        <View style={{ margin: 10, borderRadius: 10 }}>
-          {/* Header */}
+        <View style={{ marginHorizontal: 10 }}>
           <View
             style={{
               flexDirection: "row",
               justifyContent: "space-between",
               alignItems: "center",
-              marginBottom: 10,
+              marginBottom: 8,
             }}
           >
             <Text
-              style={{ fontFamily: "fustat", fontWeight: "800", fontSize: 20 }}
+              style={{ fontFamily: "fustat", fontWeight: "800", fontSize: 18 }}
             >
               Client List
             </Text>
@@ -87,16 +126,15 @@ export default function Client() {
             </TouchableOpacity>
           </View>
 
-          {/* Table with ScrollView */}
-          <ScrollView style={{ maxHeight: 400 }}>
+          <ScrollView style={{ maxHeight: 380 }}>
             {/* Table Header */}
             <View
               style={{
                 flexDirection: "row",
                 justifyContent: "space-between",
-                paddingVertical: 8,
+                paddingVertical: 6,
                 paddingHorizontal: 10,
-                borderRadius: 10,
+                borderRadius: 8,
                 backgroundColor: "#eeeeee9c",
                 borderWidth: 1,
                 borderColor: "#0000002c",
@@ -107,14 +145,13 @@ export default function Client() {
               <Text style={{ flex: 0.25, fontWeight: "700" }}>Phone</Text>
             </View>
 
-            {/* Table Rows */}
             {quotations.map((item, index) => (
               <View
                 key={index}
                 style={{
                   flexDirection: "row",
                   justifyContent: "space-between",
-                  paddingVertical: 10,
+                  paddingVertical: 8,
                   paddingHorizontal: 10,
                   borderBottomWidth: 1,
                   borderBottomColor: "#ddd",
