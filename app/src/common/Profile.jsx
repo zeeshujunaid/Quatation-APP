@@ -1,16 +1,18 @@
 import { Text, View, Image, TouchableOpacity } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import { useRouter } from "expo-router";
 
 export default function Profile() {
+  const router = useRouter();
   return (
-    <View style={{ flex: 1, backgroundColor: "#ffffffff", padding: 20 }}>
+    <View style={{ flex: 1, backgroundColor: "#ffffffff", padding: 20,paddingTop:40, }}>
       {/* BACK + TITLE */}
       <View
         style={{ flexDirection: "row", alignItems: "center", marginBottom: 30 }}
       >
         <Ionicons name="chevron-back-circle-outline" size={32} color="black" />
-        <Text style={{ fontSize: 22, fontWeight: "700", marginLeft: 10 }}>
+        <Text style={{ fontSize: 22, fontWeight: "700", marginLeft: 110 }}>
           Profile
         </Text>
       </View>
@@ -142,6 +144,7 @@ export default function Profile() {
             borderBottomWidth: 1,
             borderColor: "#eee",
           }}
+          onPress={()=>router.push("/src/common/AboutApp")}
         >
           <Ionicons
             name="information-circle-outline"
