@@ -1,6 +1,6 @@
-import { Text, View } from "react-native"; 
+import {View,Text} from "react-native"; 
 import Header from "../../components/Header";
-export default function Quatation(){
+export default function Clientlist(){
     return(
         <View style={{flex:1,}}>
                     <Header/>

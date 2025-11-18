@@ -156,7 +156,7 @@ export default function Signup() {
               alignItems: "center",
               marginBottom: 50,
             }}
-            onPress={()=>router.push("/src/admin/Dashboard")}
+            onPress={()=>router.push("/src/user/Homescreen")}
           >
             <Text style={{ color: "white", fontWeight: "bold", fontSize: 16 }}>
               Signup
