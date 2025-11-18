@@ -1,6 +1,8 @@
 import { Drawer } from "expo-router/drawer";
 import CustomDrawer from "../../components/Drawerheader";
 import { Ionicons } from "@expo/vector-icons";
+import Feather from "@expo/vector-icons/Feather";
+
 
 export default function AdminDrawer() {
   return (
@@ -25,7 +27,7 @@ export default function AdminDrawer() {
         options={{
           title: "Clients",
           drawerIcon: ({ color, size }) => (
-            <Ionicons name="people-outline" size={size} color={color} />
+            <Feather name="users" size={size} color={color} />
           ),
         }}
       />
