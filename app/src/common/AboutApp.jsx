@@ -1,7 +1,8 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-
+import { useRouter } from "expo-router";
 export default function Aboutapp() {
+  const router = useRouter();
   const About = [
     {
       number: "1",
@@ -47,7 +48,13 @@ export default function Aboutapp() {
           marginBottom: 30,
         }}
       >
-        <Ionicons name="chevron-back-circle-outline" size={32} color="black" />
+        <TouchableOpacity onPress={() =>router.back()}>
+          <Ionicons
+            name="chevron-back-circle-outline"
+            size={32}
+            color="black"
+          />
+        </TouchableOpacity>
         <Text style={{ fontSize: 22, fontWeight: "700", marginLeft: 90 }}>
           About App
         </Text>

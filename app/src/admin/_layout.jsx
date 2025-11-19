@@ -32,7 +32,7 @@ export default function AdminDrawer() {
         }}
       />
 
-      <Drawer.Screen
+      {/* <Drawer.Screen
         name="Templates"
         options={{
           title: "Templates",
@@ -40,7 +40,7 @@ export default function AdminDrawer() {
             <Ionicons name="albums-outline" size={size} color={color} />
           ),
         }}
-      />
+      /> */}
 
       <Drawer.Screen
         name="Usermanagment"

@@ -127,6 +127,7 @@ export default function Profile() {
             borderBottomWidth: 1,
             borderColor: "#eee",
           }}
+          onPress={()=>router.push("/src/common/Faq")}
         >
           <Ionicons name="help-circle-outline" size={24} color="#6B7280" />
           <Text
