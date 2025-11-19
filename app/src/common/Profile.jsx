@@ -11,7 +11,9 @@ export default function Profile() {
       <View
         style={{ flexDirection: "row", alignItems: "center", marginBottom: 30 }}
       >
+        <TouchableOpacity onPress={()=>router.back()}>
         <Ionicons name="chevron-back-circle-outline" size={32} color="black" />
+        </TouchableOpacity>
         <Text style={{ fontSize: 22, fontWeight: "700", marginLeft: 110 }}>
           Profile
         </Text>

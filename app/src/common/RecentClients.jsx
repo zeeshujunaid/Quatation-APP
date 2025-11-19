@@ -325,7 +325,7 @@ export default function RecentClient() {
   return (
     <View style={{ flex: 1, backgroundColor: "#f8f8f8", padding: 10 }}>
       {/* Back Button */}
-      <TouchableOpacity onPress={() => router.replace("/src/admin/Clientlist")}>
+      <TouchableOpacity onPress={() => router.back()}>
         <Ionicons
           name="arrow-back-sharp"
           size={28}

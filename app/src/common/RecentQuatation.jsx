@@ -29,8 +29,7 @@ export default function RecentQuotation() {
 
   return (
     <View style={{ flex: 1, margin: 10, borderRadius: 10 }}>
-      {/* Header */}
-      <TouchableOpacity onPress={()=>router.replace("/src/admin/Dashboard")}>
+      <TouchableOpacity onPress={()=>router.back()}>
       <View style={{ marginBottom: 10 }}>
         <Ionicons name="arrow-back-sharp" size={24} color="black" />
       </View>

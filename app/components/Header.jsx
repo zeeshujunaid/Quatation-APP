@@ -1,4 +1,4 @@
-import { Text, View, Pressable, TouchableOpacity } from "react-native";
+import { Text, View, Pressable, TouchableOpacity, Image } from "react-native";
 import Entypo from "@expo/vector-icons/Entypo";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useRouter } from "expo-router";
@@ -17,8 +17,7 @@ export default function Header() {
         justifyContent: "space-between",
         alignItems: "center",
         paddingHorizontal: 15,
-        paddingTop:50,
-        // backgroundColor: "#8799",
+        paddingTop: 50,
       }}
     >
       {/* LEFT - MENU */}
@@ -36,11 +35,24 @@ export default function Header() {
           gap: 10,
         }}
       >
-        <View style={{backgroundColor:"#eeeeeeff",height:40,width:40,justifyContent:"center",alignItems:"center",borderRadius:10,}}>
+        <View
+          style={{
+            backgroundColor: "#eeeeeeff",
+            height: 40,
+            width: 40,
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: 10,
+          }}
+        >
           <Ionicons name="notifications-outline" size={24} color="black" />
         </View>
-        <TouchableOpacity onPress={()=>router.push("/src/common/Profile")}>
-        <Ionicons name="person-circle-outline" size={40} color="black" />
+        <TouchableOpacity onPress={() => router.push("/src/common/Profile")}>
+          {/* <Ionicons name="person-circle-outline" size={40} color="black" /> */}
+          <Image
+            source={require("../../assets/images/profile.png")}
+            style={{ width: 40, height: 40, borderRadius: 20 }}
+          />
         </TouchableOpacity>
 
         <View>
