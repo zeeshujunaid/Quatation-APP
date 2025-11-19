@@ -1,12 +1,23 @@
-import { Text, TouchableOpacity, View, TextInput } from "react-native";
+import {
+  Text,
+  TouchableOpacity,
+  View,
+  TextInput,
+  Modal,
+  Image,
+  ScrollView,
+} from "react-native";
 import Header from "../../components/Header";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Feather from "@expo/vector-icons/Feather";
 import React, { useState } from "react";
+import Ionicons from "@expo/vector-icons/Ionicons";
+
 
 export default function Homescreen() {
   const [activeForm, setActiveForm] = useState(1);
+    const [modalVisible, setModalVisible] = useState(false);
   return (
     <View style={{ flex: 1 }}>
       <Header />
@@ -23,7 +34,6 @@ export default function Homescreen() {
         <Text style={{ fontSize: 18, fontWeight: "600" }}>New Invoice</Text>
         <AntDesign name="scan" size={24} color="black" />
       </View>
-
       <View
         style={{
           flexDirection: "row",
@@ -41,11 +51,15 @@ export default function Homescreen() {
               backgroundColor: "#00000007",
               justifyContent: "space-around",
               borderRadius: 5,
-              height: 40,
+              height: 30,
+              gap: 5,
+              paddingHorizontal: 8,
             }}
           >
-            <MaterialCommunityIcons name="eye-closed" size={18} color="black" />
-            <Text>See Preview</Text>
+            <MaterialCommunityIcons name="eye-closed" size={14} color="black" />{" "}
+            <TouchableOpacity onPress={() => setModalVisible(true)}>
+              <Text style={{ fontSize: 12 }}>See Preview</Text>{" "}
+            </TouchableOpacity>
           </View>
         </TouchableOpacity>
 
@@ -56,12 +70,14 @@ export default function Homescreen() {
               flexDirection: "row",
               backgroundColor: "#00000007",
               justifyContent: "space-around",
+              gap: 5,
               borderRadius: 5,
-              height: 40,
+              height: 30,
+              paddingHorizontal: 8,
             }}
           >
-            <Feather name="save" size={18} color="black" />
-            <Text>Save As Draft</Text>
+            <Feather name="save" size={14} color="black" />
+            <Text style={{ fontSize: 12 }}>Save As Draft</Text>
           </View>
         </TouchableOpacity>
 
@@ -69,15 +85,17 @@ export default function Homescreen() {
           <View
             style={{
               alignItems: "center",
+              gap: 5,
               flexDirection: "row",
               backgroundColor: "#00000007",
               justifyContent: "space-around",
               borderRadius: 5,
-              height: 40,
+              height: 30,
+              paddingHorizontal: 8,
             }}
           >
-            <Feather name="send" size={18} color="black" />
-            <Text>Send Invoices</Text>
+            <Feather name="send" size={14} color="black" />
+            <Text style={{ fontSize: 12 }}>Send Invoices</Text>
           </View>
         </TouchableOpacity>
       </View>
@@ -178,7 +196,6 @@ export default function Homescreen() {
             </Text>
           </TouchableOpacity>
         </View>
-
         {activeForm === 1 && (
           <View
             style={{
@@ -358,7 +375,6 @@ export default function Homescreen() {
             </View>
           </View>
         )}
-
         {activeForm === 2 && (
           <View
             style={{
@@ -504,7 +520,6 @@ export default function Homescreen() {
             </View>
           </View>
         )}
-
         {activeForm === 3 && (
           <View
             style={{
@@ -687,7 +702,6 @@ export default function Homescreen() {
             </View>
           </View>
         )}
-
         {activeForm === 4 && (
           <View
             style={{
@@ -799,7 +813,7 @@ export default function Homescreen() {
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => setModalVisible(true)}>
             <View
               style={{
                 backgroundColor: "#000",
@@ -813,6 +827,362 @@ export default function Homescreen() {
             </View>
           </TouchableOpacity>
         </View>
+        <Modal
+          visible={modalVisible}
+          animationType="slide"
+          transparent={true}
+          onRequestClose={() => setModalVisible(false)}
+        >
+          <View style={{ flex: 1, backgroundColor: "#fff" }}>
+            <ScrollView>
+              <View style={{ padding: 20 }}>
+                {/* HEADER ROW */}
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    marginBottom: 15,
+                  }}
+                >
+                  {/* LEFT - Back & Logo (Column) */}
+                  <View
+                    style={{
+                      flexDirection: "column",
+                      alignItems: "center",
+                      gap: 10,
+                    }}
+                  >
+                    <TouchableOpacity onPress={() => setModalVisible(false)}>
+                      <Ionicons
+                        name="arrow-back-sharp"
+                        size={28}
+                        color="black"
+                      />
+                    </TouchableOpacity>
+                    <Image
+                      source={require("../../../assets/images/logo.jpg")}
+                      style={{ width: 50, height: 50, borderRadius: 8 }}
+                    />
+                  </View>
+
+                  {/* CENTER - QUOTATION */}
+                  <View style={{ flex: 1, alignItems: "center" }}>
+                    <Text
+                      style={{
+                        fontSize: 26,
+                        fontWeight: "700",
+                        color: "#2196F3",
+                        textAlign: "center",
+                      }}
+                      numberOfLines={1} // ensures single line
+                    >
+                      QUOTATION
+                    </Text>
+                  </View>
+
+                  {/* RIGHT - Invoice & Client Info */}
+                  <View style={{ alignItems: "flex-end" }}>
+                    <Text style={{ fontSize: 10, fontWeight: "500" }}>
+                      Invoice: INV-56478
+                    </Text>
+                    <Text style={{ fontSize: 10 }}>Date: Nov 01, 2025</Text>
+                    <Text style={{ fontSize: 10 }}>Due: Nov 15, 2025</Text>
+                    <Text
+                      style={{ fontSize: 10, marginTop: 5, fontWeight: "500" }}
+                    >
+                      Thomas Shelby
+                    </Text>
+                    <Text style={{ fontSize: 10 }}>thomasshelby@gmail.com</Text>
+                    <Text style={{ fontSize: 10 }}>Houston, Texas</Text>
+                    <Text style={{ fontSize: 10 }}>77002</Text>
+                  </View>
+                </View>
+
+                {/* SINGLE LINE SEPARATOR */}
+                <View
+                  style={{
+                    height: 2,
+                    backgroundColor: "#2196F3",
+                    marginVertical: 10,
+                  }}
+                />
+
+                {/* PROJECT DESCRIPTION */}
+                <View style={{ marginBottom: 12 }}>
+                  <Text
+                    style={{ fontSize: 11, fontWeight: "600", marginBottom: 5 }}
+                  >
+                    Project Description:
+                  </Text>
+                  <Text style={{ fontSize: 10, color: "#666", lineHeight: 16 }}>
+                    Add a brief and concise description of the project, item or
+                    service here
+                  </Text>
+                </View>
+
+                {/* TAGS */}
+                <View
+                  style={{
+                    flexDirection: "row",
+                    flexWrap: "wrap",
+                    gap: 6,
+                    marginBottom: 15,
+                  }}
+                >
+                  {[
+                    "Customized pricing",
+                    "Season",
+                    "Just Deal",
+                    "Season 5",
+                    "Tech",
+                  ].map((tag, i) => (
+                    <View
+                      key={i}
+                      style={{
+                        backgroundColor: "#fff",
+                        paddingHorizontal: 10,
+                        paddingVertical: 4,
+                        borderRadius: 12,
+                        borderWidth: 1,
+                        borderColor: "#2196F3",
+                      }}
+                    >
+                      <Text style={{ fontSize: 9, color: "#2196F3" }}>
+                        {tag}
+                      </Text>
+                    </View>
+                  ))}
+                </View>
+
+                {/* TABLE HEADER */}
+                <View
+                  style={{
+                    flexDirection: "row",
+                    paddingVertical: 8,
+                    paddingHorizontal: 8,
+                    borderBottomWidth: 1,
+                    borderBottomColor: "#E0E0E0",
+                    marginBottom: 2,
+                  }}
+                >
+                  <Text style={{ flex: 0.4, fontSize: 9, fontWeight: "600" }}>
+                    QI
+                  </Text>
+                  <Text style={{ flex: 1.8, fontSize: 9, fontWeight: "600" }}>
+                    Description
+                  </Text>
+                  <Text
+                    style={{
+                      flex: 0.8,
+                      fontSize: 9,
+                      fontWeight: "600",
+                      textAlign: "center",
+                    }}
+                  >
+                    Qty
+                  </Text>
+                  <Text
+                    style={{
+                      flex: 1,
+                      fontSize: 9,
+                      fontWeight: "600",
+                      textAlign: "right",
+                    }}
+                  >
+                    Unit Price
+                  </Text>
+                  <Text
+                    style={{
+                      flex: 0.6,
+                      fontSize: 9,
+                      fontWeight: "600",
+                      textAlign: "center",
+                    }}
+                  >
+                    Disc
+                  </Text>
+                  <Text
+                    style={{
+                      flex: 0.6,
+                      fontSize: 9,
+                      fontWeight: "600",
+                      textAlign: "center",
+                    }}
+                  >
+                    Tax
+                  </Text>
+                </View>
+
+                {/* TABLE ROWS */}
+                {[
+                  {
+                    qi: "01",
+                    desc: "Gas torch",
+                    qty: "60pcs",
+                    price: "40,005",
+                    disc: "6%",
+                    tax: "2%",
+                  },
+                  {
+                    qi: "02",
+                    desc: "Scrapers",
+                    qty: "48pcs",
+                    price: "36,005",
+                    disc: "8%",
+                    tax: "3%",
+                  },
+                  {
+                    qi: "03",
+                    desc: "Sealant guns",
+                    qty: "30pcs",
+                    price: "50,005",
+                    disc: "6%",
+                    tax: "3%",
+                  },
+                ].map((item, i) => (
+                  <View
+                    key={i}
+                    style={{
+                      flexDirection: "row",
+                      paddingVertical: 8,
+                      paddingHorizontal: 8,
+                      borderBottomWidth: 1,
+                      borderBottomColor: "#E0E0E0",
+                    }}
+                  >
+                    <Text style={{ flex: 0.4, fontSize: 9 }}>{item.qi}</Text>
+                    <Text style={{ flex: 1.8, fontSize: 9 }}>{item.desc}</Text>
+                    <Text
+                      style={{ flex: 0.8, fontSize: 9, textAlign: "center" }}
+                    >
+                      {item.qty}
+                    </Text>
+                    <Text style={{ flex: 1, fontSize: 9, textAlign: "right" }}>
+                      {item.price}
+                    </Text>
+                    <Text
+                      style={{ flex: 0.6, fontSize: 9, textAlign: "center" }}
+                    >
+                      {item.disc}
+                    </Text>
+                    <Text
+                      style={{ flex: 0.6, fontSize: 9, textAlign: "center" }}
+                    >
+                      {item.tax}
+                    </Text>
+                  </View>
+                ))}
+
+                {/* TOTALS */}
+                <View
+                  style={{
+                    alignItems: "flex-end",
+                    marginTop: 15,
+                    marginBottom: 15,
+                  }}
+                >
+                  <View style={{ width: "45%" }}>
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                        marginBottom: 6,
+                      }}
+                    >
+                      <Text style={{ fontSize: 10 }}>Subtotal:</Text>
+                      <Text style={{ fontSize: 10, fontWeight: "600" }}>
+                        180,005
+                      </Text>
+                    </View>
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                        marginBottom: 6,
+                      }}
+                    >
+                      <Text style={{ fontSize: 10 }}>Discount Applied:</Text>
+                      <Text style={{ fontSize: 10, fontWeight: "600" }}>
+                        -35%
+                      </Text>
+                    </View>
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                        marginBottom: 6,
+                      }}
+                    >
+                      <Text style={{ fontSize: 10 }}>Tax Applied:</Text>
+                      <Text style={{ fontSize: 10, fontWeight: "600" }}>
+                        13%
+                      </Text>
+                    </View>
+                    <View
+                      style={{
+                        flexDirection: "row",
+                        justifyContent: "space-between",
+                        paddingTop: 6,
+                        borderTopWidth: 1.5,
+                        borderTopColor: "#000",
+                      }}
+                    >
+                      <Text style={{ fontSize: 11, fontWeight: "700" }}>
+                        Grand Total:
+                      </Text>
+                      <Text style={{ fontSize: 11, fontWeight: "700" }}>
+                        137,4085
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+
+                {/* BLUE SEPARATOR ABOVE TERMS */}
+                <View
+                  style={{
+                    height: 2,
+                    backgroundColor: "#2196F3",
+                    marginVertical: 10,
+                  }}
+                />
+
+                {/* TERMS & CONDITIONS */}
+                <View style={{ marginBottom: 20 }}>
+                  <Text
+                    style={{ fontSize: 10, fontWeight: "600", marginBottom: 5 }}
+                  >
+                    Terms & Conditions :
+                  </Text>
+                  <Text style={{ fontSize: 9, color: "#666", lineHeight: 14 }}>
+                    Above information is not an invoice and only an estimate of
+                    goods / services. This will not be valid proof for the
+                    delivery of goods / services
+                  </Text>
+                </View>
+
+                {/* SIGNATURE LEFT */}
+                <View style={{ alignItems: "flex-start", marginBottom: 30 }}>
+                  <Text style={{ fontSize: 10, marginBottom: 8 }}>
+                    We Are Awaiting Your Acceptance Of This Quote
+                  </Text>
+                  <Text
+                    style={{
+                      fontSize: 10,
+                      fontWeight: "600",
+                      marginBottom: 12,
+                    }}
+                  >
+                    Authorized Signature
+                  </Text>
+                  <View
+                    style={{ width: 140, height: 1.5, backgroundColor: "#000" }}
+                  />
+                </View>
+              </View>
+            </ScrollView>
+          </View>
+        </Modal>
       </View>
     </View>
   );

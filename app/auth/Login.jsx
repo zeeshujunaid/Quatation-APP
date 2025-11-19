@@ -10,10 +10,13 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useRouter } from "expo-router";
-// import BeforeAfterSlider from "../components/beforeafter";
+import BeforeAfterSlider from "../components/beforeafter";
+import beforeImg from "../../assets/images/beforeimg.jpg";
+import afterImg from "../../assets/images/afterimg.jpg";
 
 export default function Login() {
   const router = useRouter();
+
 
   return (
     <KeyboardAvoidingView
@@ -33,41 +36,41 @@ export default function Login() {
         {/* HEADER */}
         <View
           style={{
-            height: 330,
+            height: 380,
             backgroundColor: "#008CFF",
             width: "100%",
-            justifyContent: "center",
+            justifyContent: "flex-start",
             alignItems: "center",
             borderBottomLeftRadius: 200,
             borderBottomRightRadius: 200,
             overflow: "hidden",
             paddingHorizontal: 30,
+            paddingTop: 40, // 👈 slider ko neeche push karega
           }}
         >
-          <Image
-            source={require("../../assets/images/bgimg.png")}
-            style={{
-              width: 300,
-              height: 350,
-              position: "absolute",
-              // top: -20,
-              // left: -20,
-              zIndex: 0, // sabse niche
-              opacity: 0.2, // optional
-            }}
+          {/* BEFORE/AFTER SLIDER */}
+          <BeforeAfterSlider
+            beforeImage={beforeImg}
+            afterImage={afterImg}
+            width={200}
+            height={200}
+            sliderColor="#fff"
           />
-          {/* <BeforeAfterSlider/> */}
-
-          <Text style={{ color: "white", fontSize: 18, fontWeight: "600" }}>
+          {/* SPACE AFTER SLIDER */}
+          <View style={{ height: 20 }} /> {/* 👈 Clean gap added */}
+          {/* MAIN HEADING */}
+          <Text style={{ color: "white", fontSize: 20, fontWeight: "700" }}>
             Your Vision Our Expertise
           </Text>
-
+          {/* DESCRIPTION */}
           <Text
             style={{
               color: "white",
               textAlign: "center",
               marginTop: 10,
-              fontSize: 14,
+              fontSize: 10,
+              paddingHorizontal: 10,
+              lineHeight: 18,
             }}
           >
             Experience seamless collaboration where your goals meet our

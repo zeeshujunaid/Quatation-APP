@@ -10,6 +10,9 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useRouter } from "expo-router";
+import BeforeAfterSlider from "../components/beforeafter";
+import beforeImg from "../../assets/images/beforeimg.jpg";
+import afterImg from "../../assets/images/afterimg.jpg";
 
 export default function Signup() {
   const router = useRouter();
@@ -30,36 +33,45 @@ export default function Signup() {
       >
         <View
           style={{
-            height: 350,
+            height: 380,
             backgroundColor: "#008CFF",
             width: "100%",
-            justifyContent: "center",
+            justifyContent: "flex-start",
             alignItems: "center",
             borderBottomLeftRadius: 200,
             borderBottomRightRadius: 200,
             overflow: "hidden",
-            paddingHorizontal: 20,
+            paddingHorizontal: 30,
+            paddingTop: 40, // 👈 slider ko neeche push karega
           }}
         >
-          <Image
-            source={require("../../assets/images/icon.png")}
-            style={{ height: 100, width: 100, marginBottom: 20 }}
-            resizeMode="contain"
+          {/* BEFORE/AFTER SLIDER */}
+          <BeforeAfterSlider
+            beforeImage={beforeImg}
+            afterImage={afterImg}
+            width={200}
+            height={200}
+            sliderColor="#fff"
           />
-
-          <Text style={{ color: "white", fontSize: 18, fontWeight: "600" }}>
+          {/* SPACE AFTER SLIDER */}
+          <View style={{ height: 20 }} /> {/* 👈 Clean gap added */}
+          {/* MAIN HEADING */}
+          <Text style={{ color: "white", fontSize: 20, fontWeight: "700" }}>
             Your Vision Our Expertise
           </Text>
+          {/* DESCRIPTION */}
           <Text
             style={{
               color: "white",
               textAlign: "center",
               marginTop: 10,
-              fontSize: 14,
+              fontSize: 10,
+              paddingHorizontal: 10,
+              lineHeight: 18,
             }}
           >
             Experience seamless collaboration where your goals meet our
-            professional expertise.
+            professional expertise. Together, we create exceptional results.
           </Text>
         </View>
 
@@ -156,7 +168,7 @@ export default function Signup() {
               alignItems: "center",
               marginBottom: 50,
             }}
-            onPress={()=>router.push("/src/user/Homescreen")}
+            onPress={() => router.push("/src/user/Homescreen")}
           >
             <Text style={{ color: "white", fontWeight: "bold", fontSize: 16 }}>
               Signup
