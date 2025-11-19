@@ -90,7 +90,10 @@ export default function CustomDrawer(props) {
             <TouchableOpacity
               onPress={() => router.push("/src/common/Profile")}
             >
-              <Ionicons name="person-circle-outline" size={40} color="black" />
+              <Image
+                source={require("../../assets/images/profile.png")}
+                style={{ width: 40, height: 40, borderRadius: 20 }}
+              />
             </TouchableOpacity>
             <View
               style={{ justifyContent: "flex-start", alignItems: "flex-end" }}

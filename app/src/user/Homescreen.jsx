@@ -3,19 +3,73 @@ import {
   TouchableOpacity,
   View,
   TextInput,
-  Modal,
-  Image,
-  ScrollView,
 } from "react-native";
 import Header from "../../components/Header";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Feather from "@expo/vector-icons/Feather";
 import React, { useState } from "react";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import QuotationModal from "../../components/Quatation";
 
 
 export default function Homescreen() {
+  const [clientInfo, setClientInfo] = useState({
+    clientName: "",
+    companyName: "",
+    address: "",
+    city: "",
+    state: "",
+    postalCode: "",
+    email: "",
+    phone: "",
+    specialNote: "",
+  });
+
+  const [orderInfo, setOrderInfo] = useState({
+    orderSource: "",
+    orderDate: "",
+    issueDate: "",
+    dueDate: "",
+    paymentMethod: "",
+    advancePayment: "",
+    terms: "",
+  });
+  
+  const [priceSummary, setPriceSummary] = useState({
+    subtotal: "",
+    discount: "",
+    totalTax: "",
+    grandTotal: "",
+  });
+
+  const [productInfo, setProductInfo] = useState({
+    productName: "",
+    category: "",
+    unitMeasure: "",
+    quantity: "",
+    unitPrice: "",
+    discount: "",
+    tax: "",
+  });
+
+  const [products, setProducts] = useState([]);
+
+
+
+  const addProduct = () => {
+    if (productInfo.productName.trim() === "") return;
+    setProducts([...products, productInfo]); // Add product to list
+    setProductInfo({
+      productName: "",
+      category: "",
+      unitMeasure: "",
+      quantity: "",
+      unitPrice: "",
+      discount: "",
+      tax: "",
+    }); // Clear form for next product
+  };
+
   const [activeForm, setActiveForm] = useState(1);
     const [modalVisible, setModalVisible] = useState(false);
   return (
@@ -117,7 +171,7 @@ export default function Homescreen() {
           <TouchableOpacity
             onPress={() => setActiveForm(1)}
             style={{
-              backgroundColor: activeForm === 1 ? "#DCEEFF" : "#e0e0e0",
+              backgroundColor: activeForm === 1 ? "#DCEEFF" : "#ffffffff",
               paddingVertical: 2,
               height: 25,
               borderColor: "#007AFF",
@@ -138,7 +192,7 @@ export default function Homescreen() {
           <TouchableOpacity
             onPress={() => setActiveForm(2)}
             style={{
-              backgroundColor: activeForm === 1 ? "#DCEEFF" : "#e0e0e0",
+              backgroundColor: activeForm === 2 ? "#DCEEFF" : "#ffffffff",
               paddingVertical: 2,
               borderColor: "#007AFF",
               borderWidth: 2,
@@ -159,7 +213,7 @@ export default function Homescreen() {
           <TouchableOpacity
             onPress={() => setActiveForm(3)}
             style={{
-              backgroundColor: activeForm === 1 ? "#DCEEFF" : "#e0e0e0",
+              backgroundColor: activeForm === 3 ? "#DCEEFF" : "#ffffffff",
               paddingVertical: 2,
               borderColor: "#007AFF",
               borderWidth: 2,
@@ -178,7 +232,7 @@ export default function Homescreen() {
           <TouchableOpacity
             onPress={() => setActiveForm(4)}
             style={{
-              backgroundColor: activeForm === 1 ? "#cbe4fcff" : "#e0e0e0",
+              backgroundColor: activeForm === 4 ? "#cbe4fcff" : "#ffffffff",
               paddingVertical: 2,
               borderColor: "#007AFF",
               borderWidth: 2,
@@ -205,6 +259,7 @@ export default function Homescreen() {
               width: "100%",
             }}
           >
+            {/* Client + Company */}
             <View
               style={{
                 flexDirection: "row",
@@ -218,6 +273,10 @@ export default function Homescreen() {
                 </Text>
                 <TextInput
                   placeholder="Enter Client Name"
+                  value={clientInfo.clientName}
+                  onChangeText={(text) =>
+                    setClientInfo({ ...clientInfo, clientName: text })
+                  }
                   style={{
                     borderWidth: 1,
                     borderColor: "#aaa",
@@ -234,6 +293,10 @@ export default function Homescreen() {
                 </Text>
                 <TextInput
                   placeholder="Enter Company Name"
+                  value={clientInfo.companyName}
+                  onChangeText={(text) =>
+                    setClientInfo({ ...clientInfo, companyName: text })
+                  }
                   style={{
                     borderWidth: 1,
                     borderColor: "#aaa",
@@ -245,12 +308,17 @@ export default function Homescreen() {
               </View>
             </View>
 
+            {/* Address */}
             <View style={{ marginBottom: 15 }}>
               <Text style={{ fontWeight: "600", marginBottom: 5 }}>
                 Delivery Address
               </Text>
               <TextInput
                 placeholder="Enter Delivery Address"
+                value={clientInfo.address}
+                onChangeText={(text) =>
+                  setClientInfo({ ...clientInfo, address: text })
+                }
                 style={{
                   borderWidth: 1,
                   borderColor: "#aaa",
@@ -261,6 +329,7 @@ export default function Homescreen() {
               />
             </View>
 
+            {/* City, State, Postal */}
             <View
               style={{
                 flexDirection: "row",
@@ -272,6 +341,10 @@ export default function Homescreen() {
                 <Text style={{ fontWeight: "600", marginBottom: 5 }}>City</Text>
                 <TextInput
                   placeholder="Enter City"
+                  value={clientInfo.city}
+                  onChangeText={(text) =>
+                    setClientInfo({ ...clientInfo, city: text })
+                  }
                   style={{
                     borderWidth: 1,
                     borderColor: "#aaa",
@@ -288,6 +361,10 @@ export default function Homescreen() {
                 </Text>
                 <TextInput
                   placeholder="Enter State"
+                  value={clientInfo.state}
+                  onChangeText={(text) =>
+                    setClientInfo({ ...clientInfo, state: text })
+                  }
                   style={{
                     borderWidth: 1,
                     borderColor: "#aaa",
@@ -304,6 +381,10 @@ export default function Homescreen() {
                 </Text>
                 <TextInput
                   placeholder="Enter Postal Code"
+                  value={clientInfo.postalCode}
+                  onChangeText={(text) =>
+                    setClientInfo({ ...clientInfo, postalCode: text })
+                  }
                   style={{
                     borderWidth: 1,
                     borderColor: "#aaa",
@@ -315,6 +396,7 @@ export default function Homescreen() {
               </View>
             </View>
 
+            {/* Email + Phone */}
             <View
               style={{
                 flexDirection: "row",
@@ -328,6 +410,10 @@ export default function Homescreen() {
                 </Text>
                 <TextInput
                   placeholder="Enter Email"
+                  value={clientInfo.email}
+                  onChangeText={(text) =>
+                    setClientInfo({ ...clientInfo, email: text })
+                  }
                   style={{
                     borderWidth: 1,
                     borderColor: "#aaa",
@@ -344,6 +430,10 @@ export default function Homescreen() {
                 </Text>
                 <TextInput
                   placeholder="Enter Phone Number"
+                  value={clientInfo.phone}
+                  onChangeText={(text) =>
+                    setClientInfo({ ...clientInfo, phone: text })
+                  }
                   style={{
                     borderWidth: 1,
                     borderColor: "#aaa",
@@ -355,12 +445,17 @@ export default function Homescreen() {
               </View>
             </View>
 
+            {/* Special Note */}
             <View>
               <Text style={{ fontWeight: "600", marginBottom: 5 }}>
                 Special Note
               </Text>
               <TextInput
                 placeholder="Enter Special Note"
+                value={clientInfo.specialNote}
+                onChangeText={(text) =>
+                  setClientInfo({ ...clientInfo, specialNote: text })
+                }
                 multiline
                 numberOfLines={4}
                 style={{
@@ -376,13 +471,8 @@ export default function Homescreen() {
           </View>
         )}
         {activeForm === 2 && (
-          <View
-            style={{
-              marginTop: 10,
-              padding: 15,
-              borderRadius: 8,
-            }}
-          >
+          <View style={{ marginTop: 10, padding: 15, borderRadius: 8 }}>
+            {/* Order Source + Order Date */}
             <View
               style={{
                 flexDirection: "row",
@@ -396,6 +486,10 @@ export default function Homescreen() {
                 </Text>
                 <TextInput
                   placeholder="Enter Order Source"
+                  value={orderInfo.orderSource}
+                  onChangeText={(text) =>
+                    setOrderInfo({ ...orderInfo, orderSource: text })
+                  }
                   style={{
                     borderWidth: 1,
                     borderColor: "#aaa",
@@ -411,6 +505,10 @@ export default function Homescreen() {
                 </Text>
                 <TextInput
                   placeholder="Enter Order Date"
+                  value={orderInfo.orderDate}
+                  onChangeText={(text) =>
+                    setOrderInfo({ ...orderInfo, orderDate: text })
+                  }
                   style={{
                     borderWidth: 1,
                     borderColor: "#aaa",
@@ -422,6 +520,7 @@ export default function Homescreen() {
               </View>
             </View>
 
+            {/* Issue Date + Due Date */}
             <View
               style={{
                 flexDirection: "row",
@@ -435,6 +534,10 @@ export default function Homescreen() {
                 </Text>
                 <TextInput
                   placeholder="Enter Issue Date"
+                  value={orderInfo.issueDate}
+                  onChangeText={(text) =>
+                    setOrderInfo({ ...orderInfo, issueDate: text })
+                  }
                   style={{
                     borderWidth: 1,
                     borderColor: "#aaa",
@@ -450,6 +553,10 @@ export default function Homescreen() {
                 </Text>
                 <TextInput
                   placeholder="Enter Due Date"
+                  value={orderInfo.dueDate}
+                  onChangeText={(text) =>
+                    setOrderInfo({ ...orderInfo, dueDate: text })
+                  }
                   style={{
                     borderWidth: 1,
                     borderColor: "#aaa",
@@ -461,6 +568,7 @@ export default function Homescreen() {
               </View>
             </View>
 
+            {/* Payment Method + Advance Payment */}
             <View
               style={{
                 flexDirection: "row",
@@ -474,6 +582,10 @@ export default function Homescreen() {
                 </Text>
                 <TextInput
                   placeholder="Enter Payment Method"
+                  value={orderInfo.paymentMethod}
+                  onChangeText={(text) =>
+                    setOrderInfo({ ...orderInfo, paymentMethod: text })
+                  }
                   style={{
                     borderWidth: 1,
                     borderColor: "#aaa",
@@ -489,6 +601,10 @@ export default function Homescreen() {
                 </Text>
                 <TextInput
                   placeholder="Enter Advance Payment"
+                  value={orderInfo.advancePayment}
+                  onChangeText={(text) =>
+                    setOrderInfo({ ...orderInfo, advancePayment: text })
+                  }
                   style={{
                     borderWidth: 1,
                     borderColor: "#aaa",
@@ -500,12 +616,17 @@ export default function Homescreen() {
               </View>
             </View>
 
+            {/* Terms & Conditions */}
             <View>
               <Text style={{ fontWeight: "600", marginBottom: 5 }}>
                 Terms & Conditions
               </Text>
               <TextInput
                 placeholder="Enter Terms & Conditions"
+                value={orderInfo.terms}
+                onChangeText={(text) =>
+                  setOrderInfo({ ...orderInfo, terms: text })
+                }
                 multiline
                 numberOfLines={4}
                 style={{
@@ -521,16 +642,12 @@ export default function Homescreen() {
           </View>
         )}
         {activeForm === 3 && (
-          <View
-            style={{
-              marginTop: 10,
-              padding: 15,
-              borderRadius: 8,
-            }}
-          >
+          <View style={{ marginTop: 10, padding: 15, borderRadius: 8 }}>
             <Text style={{ fontWeight: "600", marginBottom: 15, fontSize: 16 }}>
               Add Product
             </Text>
+
+            {/* Product Name + Category */}
             <View
               style={{
                 flexDirection: "row",
@@ -544,6 +661,10 @@ export default function Homescreen() {
                 </Text>
                 <TextInput
                   placeholder="Enter Product Name"
+                  value={productInfo.productName}
+                  onChangeText={(text) =>
+                    setProductInfo({ ...productInfo, productName: text })
+                  }
                   style={{
                     borderWidth: 1,
                     borderColor: "#aaa",
@@ -559,6 +680,10 @@ export default function Homescreen() {
                 </Text>
                 <TextInput
                   placeholder="Enter Category"
+                  value={productInfo.category}
+                  onChangeText={(text) =>
+                    setProductInfo({ ...productInfo, category: text })
+                  }
                   style={{
                     borderWidth: 1,
                     borderColor: "#aaa",
@@ -570,6 +695,7 @@ export default function Homescreen() {
               </View>
             </View>
 
+            {/* Unit Measure + Quantity */}
             <View
               style={{
                 flexDirection: "row",
@@ -583,6 +709,10 @@ export default function Homescreen() {
                 </Text>
                 <TextInput
                   placeholder="Enter Unit Measure"
+                  value={productInfo.unitMeasure}
+                  onChangeText={(text) =>
+                    setProductInfo({ ...productInfo, unitMeasure: text })
+                  }
                   style={{
                     borderWidth: 1,
                     borderColor: "#aaa",
@@ -598,6 +728,10 @@ export default function Homescreen() {
                 </Text>
                 <TextInput
                   placeholder="Enter Quantity"
+                  value={productInfo.quantity}
+                  onChangeText={(text) =>
+                    setProductInfo({ ...productInfo, quantity: text })
+                  }
                   style={{
                     borderWidth: 1,
                     borderColor: "#aaa",
@@ -609,43 +743,7 @@ export default function Homescreen() {
               </View>
             </View>
 
-            <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                marginBottom: 15,
-              }}
-            >
-              <View style={{ flex: 1, marginRight: 5 }}>
-                <Text style={{ fontWeight: "600", marginBottom: 5 }}>City</Text>
-                <TextInput
-                  placeholder="Enter City"
-                  style={{
-                    borderWidth: 1,
-                    borderColor: "#aaa",
-                    borderRadius: 6,
-                    padding: 12,
-                    height: 45,
-                  }}
-                />
-              </View>
-              <View style={{ flex: 1, marginLeft: 5 }}>
-                <Text style={{ fontWeight: "600", marginBottom: 5 }}>
-                  Phone Number
-                </Text>
-                <TextInput
-                  placeholder="Enter Phone Number"
-                  style={{
-                    borderWidth: 1,
-                    borderColor: "#aaa",
-                    borderRadius: 6,
-                    padding: 12,
-                    height: 45,
-                  }}
-                />
-              </View>
-            </View>
-
+            {/* Unit Price + Discount Applied */}
             <View
               style={{
                 flexDirection: "row",
@@ -659,6 +757,10 @@ export default function Homescreen() {
                 </Text>
                 <TextInput
                   placeholder="Enter Unit Price"
+                  value={productInfo.unitPrice}
+                  onChangeText={(text) =>
+                    setProductInfo({ ...productInfo, unitPrice: text })
+                  }
                   style={{
                     borderWidth: 1,
                     borderColor: "#aaa",
@@ -674,6 +776,10 @@ export default function Homescreen() {
                 </Text>
                 <TextInput
                   placeholder="Enter Discount"
+                  value={productInfo.discount}
+                  onChangeText={(text) =>
+                    setProductInfo({ ...productInfo, discount: text })
+                  }
                   style={{
                     borderWidth: 1,
                     borderColor: "#aaa",
@@ -685,12 +791,17 @@ export default function Homescreen() {
               </View>
             </View>
 
+            {/* Tax Applied */}
             <View>
               <Text style={{ fontWeight: "600", marginBottom: 5 }}>
                 Tax Applied
               </Text>
               <TextInput
                 placeholder="Enter Tax"
+                value={productInfo.tax}
+                onChangeText={(text) =>
+                  setProductInfo({ ...productInfo, tax: text })
+                }
                 style={{
                   borderWidth: 1,
                   borderColor: "#aaa",
@@ -703,17 +814,12 @@ export default function Homescreen() {
           </View>
         )}
         {activeForm === 4 && (
-          <View
-            style={{
-              marginTop: 10,
-              padding: 15,
-              borderRadius: 8,
-            }}
-          >
+          <View style={{ marginTop: 10, padding: 15, borderRadius: 8 }}>
             <Text style={{ fontWeight: "600", marginBottom: 15, fontSize: 16 }}>
               Price Summary
             </Text>
 
+            {/* Subtotal + Discount */}
             <View
               style={{
                 flexDirection: "row",
@@ -727,6 +833,10 @@ export default function Homescreen() {
                 </Text>
                 <TextInput
                   placeholder="Enter Subtotal"
+                  value={priceSummary.subtotal}
+                  onChangeText={(text) =>
+                    setPriceSummary({ ...priceSummary, subtotal: text })
+                  }
                   style={{
                     borderWidth: 1,
                     borderColor: "#aaa",
@@ -742,6 +852,10 @@ export default function Homescreen() {
                 </Text>
                 <TextInput
                   placeholder="Enter Discount"
+                  value={priceSummary.discount}
+                  onChangeText={(text) =>
+                    setPriceSummary({ ...priceSummary, discount: text })
+                  }
                   style={{
                     borderWidth: 1,
                     borderColor: "#aaa",
@@ -753,11 +867,9 @@ export default function Homescreen() {
               </View>
             </View>
 
+            {/* Total Tax + Grand Total */}
             <View
-              style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-              }}
+              style={{ flexDirection: "row", justifyContent: "space-between" }}
             >
               <View style={{ flex: 1, marginRight: 5 }}>
                 <Text style={{ fontWeight: "600", marginBottom: 5 }}>
@@ -765,6 +877,10 @@ export default function Homescreen() {
                 </Text>
                 <TextInput
                   placeholder="Enter Total Tax"
+                  value={priceSummary.totalTax}
+                  onChangeText={(text) =>
+                    setPriceSummary({ ...priceSummary, totalTax: text })
+                  }
                   style={{
                     borderWidth: 1,
                     borderColor: "#aaa",
@@ -780,6 +896,10 @@ export default function Homescreen() {
                 </Text>
                 <TextInput
                   placeholder="Enter Grand Total"
+                  value={priceSummary.grandTotal}
+                  onChangeText={(text) =>
+                    setPriceSummary({ ...priceSummary, grandTotal: text })
+                  }
                   style={{
                     borderWidth: 1,
                     borderColor: "#aaa",
@@ -792,6 +912,7 @@ export default function Homescreen() {
             </View>
           </View>
         )}
+
         <View
           style={{
             flexDirection: "row",
@@ -826,364 +947,31 @@ export default function Homescreen() {
               <Text style={{ color: "#fff", fontWeight: "600" }}>PREVIEW</Text>
             </View>
           </TouchableOpacity>
+
+          <TouchableOpacity onPress={addProduct}>
+            <View
+              style={{
+                backgroundColor: "#000",
+                paddingVertical: 10,
+                paddingHorizontal: 25,
+                borderRadius: 8,
+                alignItems: "center",
+              }}
+            >
+              <Text style={{ color: "#fff", fontWeight: "600" }}>ADD</Text>
+            </View>
+          </TouchableOpacity>
         </View>
-        <Modal
-          visible={modalVisible}
-          animationType="slide"
-          transparent={true}
-          onRequestClose={() => setModalVisible(false)}
-        >
-          <View style={{ flex: 1, backgroundColor: "#fff" }}>
-            <ScrollView>
-              <View style={{ padding: 20 }}>
-                {/* HEADER ROW */}
-                <View
-                  style={{
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    marginBottom: 15,
-                  }}
-                >
-                  {/* LEFT - Back & Logo (Column) */}
-                  <View
-                    style={{
-                      flexDirection: "column",
-                      alignItems: "center",
-                      gap: 10,
-                    }}
-                  >
-                    <TouchableOpacity onPress={() => setModalVisible(false)}>
-                      <Ionicons
-                        name="arrow-back-sharp"
-                        size={28}
-                        color="black"
-                      />
-                    </TouchableOpacity>
-                    <Image
-                      source={require("../../../assets/images/logo.jpg")}
-                      style={{ width: 50, height: 50, borderRadius: 8 }}
-                    />
-                  </View>
-
-                  {/* CENTER - QUOTATION */}
-                  <View style={{ flex: 1, alignItems: "center" }}>
-                    <Text
-                      style={{
-                        fontSize: 26,
-                        fontWeight: "700",
-                        color: "#2196F3",
-                        textAlign: "center",
-                      }}
-                      numberOfLines={1} // ensures single line
-                    >
-                      QUOTATION
-                    </Text>
-                  </View>
-
-                  {/* RIGHT - Invoice & Client Info */}
-                  <View style={{ alignItems: "flex-end" }}>
-                    <Text style={{ fontSize: 10, fontWeight: "500" }}>
-                      Invoice: INV-56478
-                    </Text>
-                    <Text style={{ fontSize: 10 }}>Date: Nov 01, 2025</Text>
-                    <Text style={{ fontSize: 10 }}>Due: Nov 15, 2025</Text>
-                    <Text
-                      style={{ fontSize: 10, marginTop: 5, fontWeight: "500" }}
-                    >
-                      Thomas Shelby
-                    </Text>
-                    <Text style={{ fontSize: 10 }}>thomasshelby@gmail.com</Text>
-                    <Text style={{ fontSize: 10 }}>Houston, Texas</Text>
-                    <Text style={{ fontSize: 10 }}>77002</Text>
-                  </View>
-                </View>
-
-                {/* SINGLE LINE SEPARATOR */}
-                <View
-                  style={{
-                    height: 2,
-                    backgroundColor: "#2196F3",
-                    marginVertical: 10,
-                  }}
-                />
-
-                {/* PROJECT DESCRIPTION */}
-                <View style={{ marginBottom: 12 }}>
-                  <Text
-                    style={{ fontSize: 11, fontWeight: "600", marginBottom: 5 }}
-                  >
-                    Project Description:
-                  </Text>
-                  <Text style={{ fontSize: 10, color: "#666", lineHeight: 16 }}>
-                    Add a brief and concise description of the project, item or
-                    service here
-                  </Text>
-                </View>
-
-                {/* TAGS */}
-                <View
-                  style={{
-                    flexDirection: "row",
-                    flexWrap: "wrap",
-                    gap: 6,
-                    marginBottom: 15,
-                  }}
-                >
-                  {[
-                    "Customized pricing",
-                    "Season",
-                    "Just Deal",
-                    "Season 5",
-                    "Tech",
-                  ].map((tag, i) => (
-                    <View
-                      key={i}
-                      style={{
-                        backgroundColor: "#fff",
-                        paddingHorizontal: 10,
-                        paddingVertical: 4,
-                        borderRadius: 12,
-                        borderWidth: 1,
-                        borderColor: "#2196F3",
-                      }}
-                    >
-                      <Text style={{ fontSize: 9, color: "#2196F3" }}>
-                        {tag}
-                      </Text>
-                    </View>
-                  ))}
-                </View>
-
-                {/* TABLE HEADER */}
-                <View
-                  style={{
-                    flexDirection: "row",
-                    paddingVertical: 8,
-                    paddingHorizontal: 8,
-                    borderBottomWidth: 1,
-                    borderBottomColor: "#E0E0E0",
-                    marginBottom: 2,
-                  }}
-                >
-                  <Text style={{ flex: 0.4, fontSize: 9, fontWeight: "600" }}>
-                    QI
-                  </Text>
-                  <Text style={{ flex: 1.8, fontSize: 9, fontWeight: "600" }}>
-                    Description
-                  </Text>
-                  <Text
-                    style={{
-                      flex: 0.8,
-                      fontSize: 9,
-                      fontWeight: "600",
-                      textAlign: "center",
-                    }}
-                  >
-                    Qty
-                  </Text>
-                  <Text
-                    style={{
-                      flex: 1,
-                      fontSize: 9,
-                      fontWeight: "600",
-                      textAlign: "right",
-                    }}
-                  >
-                    Unit Price
-                  </Text>
-                  <Text
-                    style={{
-                      flex: 0.6,
-                      fontSize: 9,
-                      fontWeight: "600",
-                      textAlign: "center",
-                    }}
-                  >
-                    Disc
-                  </Text>
-                  <Text
-                    style={{
-                      flex: 0.6,
-                      fontSize: 9,
-                      fontWeight: "600",
-                      textAlign: "center",
-                    }}
-                  >
-                    Tax
-                  </Text>
-                </View>
-
-                {/* TABLE ROWS */}
-                {[
-                  {
-                    qi: "01",
-                    desc: "Gas torch",
-                    qty: "60pcs",
-                    price: "40,005",
-                    disc: "6%",
-                    tax: "2%",
-                  },
-                  {
-                    qi: "02",
-                    desc: "Scrapers",
-                    qty: "48pcs",
-                    price: "36,005",
-                    disc: "8%",
-                    tax: "3%",
-                  },
-                  {
-                    qi: "03",
-                    desc: "Sealant guns",
-                    qty: "30pcs",
-                    price: "50,005",
-                    disc: "6%",
-                    tax: "3%",
-                  },
-                ].map((item, i) => (
-                  <View
-                    key={i}
-                    style={{
-                      flexDirection: "row",
-                      paddingVertical: 8,
-                      paddingHorizontal: 8,
-                      borderBottomWidth: 1,
-                      borderBottomColor: "#E0E0E0",
-                    }}
-                  >
-                    <Text style={{ flex: 0.4, fontSize: 9 }}>{item.qi}</Text>
-                    <Text style={{ flex: 1.8, fontSize: 9 }}>{item.desc}</Text>
-                    <Text
-                      style={{ flex: 0.8, fontSize: 9, textAlign: "center" }}
-                    >
-                      {item.qty}
-                    </Text>
-                    <Text style={{ flex: 1, fontSize: 9, textAlign: "right" }}>
-                      {item.price}
-                    </Text>
-                    <Text
-                      style={{ flex: 0.6, fontSize: 9, textAlign: "center" }}
-                    >
-                      {item.disc}
-                    </Text>
-                    <Text
-                      style={{ flex: 0.6, fontSize: 9, textAlign: "center" }}
-                    >
-                      {item.tax}
-                    </Text>
-                  </View>
-                ))}
-
-                {/* TOTALS */}
-                <View
-                  style={{
-                    alignItems: "flex-end",
-                    marginTop: 15,
-                    marginBottom: 15,
-                  }}
-                >
-                  <View style={{ width: "45%" }}>
-                    <View
-                      style={{
-                        flexDirection: "row",
-                        justifyContent: "space-between",
-                        marginBottom: 6,
-                      }}
-                    >
-                      <Text style={{ fontSize: 10 }}>Subtotal:</Text>
-                      <Text style={{ fontSize: 10, fontWeight: "600" }}>
-                        180,005
-                      </Text>
-                    </View>
-                    <View
-                      style={{
-                        flexDirection: "row",
-                        justifyContent: "space-between",
-                        marginBottom: 6,
-                      }}
-                    >
-                      <Text style={{ fontSize: 10 }}>Discount Applied:</Text>
-                      <Text style={{ fontSize: 10, fontWeight: "600" }}>
-                        -35%
-                      </Text>
-                    </View>
-                    <View
-                      style={{
-                        flexDirection: "row",
-                        justifyContent: "space-between",
-                        marginBottom: 6,
-                      }}
-                    >
-                      <Text style={{ fontSize: 10 }}>Tax Applied:</Text>
-                      <Text style={{ fontSize: 10, fontWeight: "600" }}>
-                        13%
-                      </Text>
-                    </View>
-                    <View
-                      style={{
-                        flexDirection: "row",
-                        justifyContent: "space-between",
-                        paddingTop: 6,
-                        borderTopWidth: 1.5,
-                        borderTopColor: "#000",
-                      }}
-                    >
-                      <Text style={{ fontSize: 11, fontWeight: "700" }}>
-                        Grand Total:
-                      </Text>
-                      <Text style={{ fontSize: 11, fontWeight: "700" }}>
-                        137,4085
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-
-                {/* BLUE SEPARATOR ABOVE TERMS */}
-                <View
-                  style={{
-                    height: 2,
-                    backgroundColor: "#2196F3",
-                    marginVertical: 10,
-                  }}
-                />
-
-                {/* TERMS & CONDITIONS */}
-                <View style={{ marginBottom: 20 }}>
-                  <Text
-                    style={{ fontSize: 10, fontWeight: "600", marginBottom: 5 }}
-                  >
-                    Terms & Conditions :
-                  </Text>
-                  <Text style={{ fontSize: 9, color: "#666", lineHeight: 14 }}>
-                    Above information is not an invoice and only an estimate of
-                    goods / services. This will not be valid proof for the
-                    delivery of goods / services
-                  </Text>
-                </View>
-
-                {/* SIGNATURE LEFT */}
-                <View style={{ alignItems: "flex-start", marginBottom: 30 }}>
-                  <Text style={{ fontSize: 10, marginBottom: 8 }}>
-                    We Are Awaiting Your Acceptance Of This Quote
-                  </Text>
-                  <Text
-                    style={{
-                      fontSize: 10,
-                      fontWeight: "600",
-                      marginBottom: 12,
-                    }}
-                  >
-                    Authorized Signature
-                  </Text>
-                  <View
-                    style={{ width: 140, height: 1.5, backgroundColor: "#000" }}
-                  />
-                </View>
-              </View>
-            </ScrollView>
-          </View>
-        </Modal>
       </View>
+
+      <QuotationModal
+        visible={modalVisible}
+        onClose={() => setModalVisible(false)}
+        clientInfo={clientInfo}
+        orderInfo={orderInfo}
+        products={products}
+        priceSummary={priceSummary}
+      />
     </View>
   );
 }

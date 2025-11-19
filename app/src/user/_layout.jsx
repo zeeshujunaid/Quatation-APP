@@ -36,17 +36,7 @@ export default function UserDrawer() {
         options={{
           title: "ClientList",
           drawerIcon: ({ color, size }) => (
-            <Feather name="users" size={size} color={color} />
-          ),
-        }}
-      />
-
-      <Drawer.Screen
-        name="Templates"
-        options={{
-          title: "Templates",
-          drawerIcon: ({ color, size }) => (
-            <Feather name="users" size={size} color={color} />
+            <Ionicons name="albums-outline" size={size} color={color} />
           ),
         }}
       />
@@ -56,7 +46,7 @@ export default function UserDrawer() {
         options={{
           title: "UserManagment",
           drawerIcon: ({ color, size }) => (
-            <Feather name="users" size={size} color={color} />
+            <Ionicons name="person-add-outline" size={size} color={color} />
           ),
         }}
       />
