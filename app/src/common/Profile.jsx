@@ -70,6 +70,7 @@ export default function Profile() {
             borderBottomWidth: 1,
             borderColor: "#eee",
           }}
+          onPress={()=>router.push("/src/common/Editprofile")}
         >
           <Ionicons name="person-circle-outline" size={24} color="#6B7280" />
           <Text
@@ -108,6 +109,7 @@ export default function Profile() {
             borderBottomWidth: 1,
             borderColor: "#eee",
           }}
+          onPress={()=>router.push("/src/common/Notification")}
         >
           <Ionicons name="notifications-outline" size={24} color="#6B7280" />
           <Text

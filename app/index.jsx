@@ -90,7 +90,7 @@ export default function Index() {
           shadowRadius: 4,
           elevation: 5,
         }}
-        onPress={() => router.push("/auth/Login")}
+        onPress={() => router.push("/src/common/Profile")}
       >
         <Text
           style={{
